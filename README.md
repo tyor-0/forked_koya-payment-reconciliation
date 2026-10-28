@@ -8,6 +8,7 @@ Fix it, in Python (`reconcile.py`) or JavaScript (`reconcile.js`), whichever you
 
 - Each line is one event: `txn_id`, `status` (`success`, `failed` or `pending`), `amount` in naira, `currency`, and `ts` (when it happened, UTC).
 - A payment can be attempted more than once. Every attempt has the same `txn_id`. Only the latest attempt for each `txn_id` counts.
+-only the latest counts
 - A payment counts as collected only if its latest attempt is `success`.
 - The export comes from a production system and isn't perfectly clean. Ignore lines that can't be read, and events without a `txn_id`. Every other event is valid and must be counted correctly.
 - `expected.txt` holds the number of successful payments the finance team counted by hand. The script checks itself against it.
